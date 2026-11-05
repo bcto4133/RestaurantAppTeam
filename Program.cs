@@ -69,4 +69,31 @@ namespace RestaurantApp
             Console.WriteLine($"คะแนนสูงสุด: {best.Name} ({best.Score})");
             Console.WriteLine($"คะแนนต่ำสุด: {worst.Name} ({worst.Score})");
         }
+        static void ShowSummary(List<Restaurant> restaurants)
+        {
+            Console.WriteLine("-----------------------");
+            Console.WriteLine("สรุปคะแนนร้านอาหาร");
+
+
+            if (restaurants.Count == 0)
+            {
+                Console.WriteLine("ยังไม่มีข้อมูลร้านอาหาร");
+                return;
+            }
+
+
+            Restaurant best = restaurants[0];
+            Restaurant worst = restaurants[0];
+
+
+            foreach (var item in restaurants)
+            {
+                if (item.Score > best.Score) best = item;
+                if (item.Score < worst.Score) worst = item;
+            }
+
+
+            Console.WriteLine($"คะแนนสูงสุด: {best.Name} | {best.Type} | {best.Score}");
+            Console.WriteLine($"คะแนนต่ำสุด: {worst.Name} | {worst.Type} | {worst.Score}");
+        }
     }
