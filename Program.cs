@@ -83,3 +83,32 @@ static void SearchRestaurant(List<Restaurant> restaurants)
             }
         }
     }
+
+    // ---------- commit ที่ 2 : ปรับปรุง เพิ่มหัวข้อ + ไม่สนตัวพิมพ์เล็ก/ใหญ่ + บอกคำที่ค้นหา (ขั้นที่ 7) ----------
+static void SearchRestaurant(List<Restaurant> restaurants)
+{
+    Console.WriteLine("-----------------------");
+    Console.WriteLine("ค้นหาร้านอาหาร");
+
+
+    Console.Write("พิมพ์ชื่อร้าน (บางส่วนก็ได้): ");
+    string keyword = Console.ReadLine();
+
+
+    bool found = false;
+    foreach (var item in restaurants)
+    {
+        if (item.Name.IndexOf(keyword, StringComparison.OrdinalIgnoreCase) >= 0)
+        {
+            Console.WriteLine($"ID: {item.Id} | ร้าน: {item.Name} | ประเภท: {item.Type} | คะแนน: {item.Score}");
+            found = true;
+        }
+    }
+
+
+    if (!found)
+    {
+        Console.WriteLine($"ไม่พบร้านที่ชื่อมีคำว่า \"{keyword}\"");
+    }
+}
+}
