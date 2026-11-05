@@ -92,4 +92,56 @@ namespace RestaurantApp
             }
         }
     }
+
+    
+
+    // ===== A | branch: feature/add-restaurant =====
+// งาน: รับชื่อร้าน ประเภท และคะแนนจากคีย์บอร์ด แล้วเพิ่มเข้า List
+// วิธีใช้: วางแทนเมธอดว่าง AddRestaurant ใน Program.cs (ไม่ต้องแก้ class Restaurant)
+ 
+// ---------- commit ที่ 1 : ให้ทำงานได้ตามโจทย์ (ขั้นที่ 6) ----------
+static void AddRestaurant(List<Restaurant> restaurants)
+        {
+            Console.Write("ชื่อร้าน: ");
+            string name = Console.ReadLine();
+
+            Console.Write("ประเภท: ");
+            string type = Console.ReadLine();
+
+            Console.Write("คะแนน: ");
+            double score = double.Parse(Console.ReadLine());
+
+            int newId = restaurants.Count + 1;
+            restaurants.Add(new Restaurant(newId, name, type, score));
+
+            ShowRestaurants(restaurants);
+        }
+    }
+
+    // ---------- commit ที่ 2 : ปรับปรุง เพิ่มหัวข้อ + ตรวจคะแนน 0-5 (ขั้นที่ 7) ----------
+static void AddRestaurant(List<Restaurant> restaurants)
+{
+    Console.WriteLine("-----------------------");
+    Console.WriteLine("เพิ่มร้านอาหารใหม่");
+
+    Console.Write("ชื่อร้าน: ");
+    string name = Console.ReadLine();
+
+    Console.Write("ประเภท: ");
+    string type = Console.ReadLine();
+
+    Console.Write("คะแนน (0-5): ");
+    double score;
+    while (!double.TryParse(Console.ReadLine(), out score) || score < 0 || score > 5)
+    {
+        Console.Write("กรอกคะแนนไม่ถูกต้อง ลองใหม่ (0-5): ");
+    }
+
+    int newId = restaurants.Count + 1;
+    restaurants.Add(new Restaurant(newId, name, type, score));
+    Console.WriteLine($"เพิ่มร้าน {name} เรียบร้อย");
+
+    Console.WriteLine("-----------------------");
+    ShowRestaurants(restaurants);
+}
 }
