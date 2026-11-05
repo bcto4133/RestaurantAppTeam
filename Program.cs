@@ -53,4 +53,33 @@ namespace RestaurantApp
             Score = score;
         }
     }
-}
+
+    // ===== D | branch: feature/search-restaurant =====
+// งาน: ค้นหาร้านจากชื่อ (พิมพ์บางส่วนก็ได้) แล้วแสดงผล ถ้าไม่พบให้แจ้งผู้ใช้
+// วิธีใช้: วางแทนเมธอดว่าง SearchRestaurant ใน Program.cs
+
+
+// ---------- commit ที่ 1 : ให้ทำงานได้ตามโจทย์ (ขั้นที่ 6) ----------
+static void SearchRestaurant(List<Restaurant> restaurants)
+        {
+            Console.Write("พิมพ์ชื่อร้านที่ต้องการค้นหา: ");
+            string keyword = Console.ReadLine();
+
+
+            bool found = false;
+            foreach (var item in restaurants)
+            {
+                if (item.Name.Contains(keyword))
+                {
+                    Console.WriteLine($"ID: {item.Id} | ร้าน: {item.Name} | ประเภท: {item.Type} | คะแนน: {item.Score}");
+                    found = true;
+                }
+            }
+
+
+            if (!found)
+            {
+                Console.WriteLine("ไม่พบร้านที่ค้นหา");
+            }
+        }
+    }
