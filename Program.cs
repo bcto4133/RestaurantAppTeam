@@ -52,6 +52,45 @@ namespace RestaurantApp
             Type = type;
             Score = score;
         }
+        // ===== B | branch: feature/good-rating =====
+        // งาน: แสดงเฉพาะร้านที่คะแนนตั้งแต่ 4.5 ขึ้นไป
+        // วิธีใช้: วางแทนเมธอดว่าง ShowGoodRating ใน Program.cs
+
+
+        // ---------- commit ที่ 1 : ให้ทำงานได้ตามโจทย์ (ขั้นที่ 6) ----------
+        static void ShowGoodRating(List<Restaurant> restaurants)
+        {
+            foreach (var item in restaurants)
+            {
+                if (item.Score >= 4.5)
+                {
+                    Console.WriteLine($"ID: {item.Id} | ร้าน: {item.Name} | ประเภท: {item.Type} | คะแนน: {item.Score}");
+                }
+            }
+        }
+        // ---------- commit ที่ 2 : ปรับปรุง เพิ่มหัวข้อ + แจ้งเมื่อไม่มีร้านที่เข้าเงื่อนไข (ขั้นที่ 7) ----------
+        static void ShowGoodRating(List<Restaurant> restaurants)
+        {
+            Console.WriteLine("-----------------------");
+            Console.WriteLine("ร้านอาหารที่คะแนน 4.5 ขึ้นไป");
+
+
+            bool found = false;
+            foreach (var item in restaurants)
+            {
+                if (item.Score >= 4.5)
+                {
+                    Console.WriteLine($"ID: {item.Id} | ร้าน: {item.Name} | ประเภท: {item.Type} | คะแนน: {item.Score}");
+                    found = true;
+                }
+            }
+
+
+            if (!found)
+            {
+                Console.WriteLine("ไม่มีร้านที่คะแนนตั้งแต่ 4.5 ขึ้นไป");
+            }
+        }
     }
 
     
