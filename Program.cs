@@ -68,10 +68,6 @@ namespace RestaurantApp
                 }
             }
         }
-
-
-
-
         // ---------- commit ที่ 2 : ปรับปรุง เพิ่มหัวข้อ + แจ้งเมื่อไม่มีร้านที่เข้าเงื่อนไข (ขั้นที่ 7) ----------
         static void ShowGoodRating(List<Restaurant> restaurants)
         {
