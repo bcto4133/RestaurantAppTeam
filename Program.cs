@@ -93,6 +93,7 @@ namespace RestaurantApp
         }
     }
 
+<<<<<<< HEAD
     
 
     // ===== A | branch: feature/add-restaurant =====
@@ -198,4 +199,63 @@ static void ShowSummary(List<Restaurant> restaurants)
 }
 
 
+=======
+    // ===== D | branch: feature/search-restaurant =====
+// งาน: ค้นหาร้านจากชื่อ (พิมพ์บางส่วนก็ได้) แล้วแสดงผล ถ้าไม่พบให้แจ้งผู้ใช้
+// วิธีใช้: วางแทนเมธอดว่าง SearchRestaurant ใน Program.cs
+
+
+// ---------- commit ที่ 1 : ให้ทำงานได้ตามโจทย์ (ขั้นที่ 6) ----------
+static void SearchRestaurant(List<Restaurant> restaurants)
+        {
+            Console.Write("พิมพ์ชื่อร้านที่ต้องการค้นหา: ");
+            string keyword = Console.ReadLine();
+
+
+            bool found = false;
+            foreach (var item in restaurants)
+            {
+                if (item.Name.Contains(keyword))
+                {
+                    Console.WriteLine($"ID: {item.Id} | ร้าน: {item.Name} | ประเภท: {item.Type} | คะแนน: {item.Score}");
+                    found = true;
+                }
+            }
+
+
+            if (!found)
+            {
+                Console.WriteLine("ไม่พบร้านที่ค้นหา");
+            }
+        }
+    }
+
+    // ---------- commit ที่ 2 : ปรับปรุง เพิ่มหัวข้อ + ไม่สนตัวพิมพ์เล็ก/ใหญ่ + บอกคำที่ค้นหา (ขั้นที่ 7) ----------
+static void SearchRestaurant(List<Restaurant> restaurants)
+{
+    Console.WriteLine("-----------------------");
+    Console.WriteLine("ค้นหาร้านอาหาร");
+
+
+    Console.Write("พิมพ์ชื่อร้าน (บางส่วนก็ได้): ");
+    string keyword = Console.ReadLine();
+
+
+    bool found = false;
+    foreach (var item in restaurants)
+    {
+        if (item.Name.IndexOf(keyword, StringComparison.OrdinalIgnoreCase) >= 0)
+        {
+            Console.WriteLine($"ID: {item.Id} | ร้าน: {item.Name} | ประเภท: {item.Type} | คะแนน: {item.Score}");
+            found = true;
+        }
+    }
+
+
+    if (!found)
+    {
+        Console.WriteLine($"ไม่พบร้านที่ชื่อมีคำว่า \"{keyword}\"");
+    }
+}
+>>>>>>> feature/searchrestaurant
 }
