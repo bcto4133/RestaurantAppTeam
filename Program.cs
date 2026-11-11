@@ -168,5 +168,34 @@ static void ShowSummary(List<Restaurant> restaurants)
     Console.WriteLine($"คะแนนต่ำสุด: {worst.Name} ({worst.Score})");
 }
 
+// ---------- commit ที่ 2 : ปรับปรุง เพิ่มหัวข้อ + กันกรณี List ว่าง (ขั้นที่ 7) ----------
+static void ShowSummary(List<Restaurant> restaurants)
+{
+    Console.WriteLine("-----------------------");
+    Console.WriteLine("สรุปคะแนนร้านอาหาร");
+
+
+    if (restaurants.Count == 0)
+    {
+        Console.WriteLine("ยังไม่มีข้อมูลร้านอาหาร");
+        return;
+    }
+
+
+    Restaurant best = restaurants[0];
+    Restaurant worst = restaurants[0];
+
+
+    foreach (var item in restaurants)
+    {
+        if (item.Score > best.Score) best = item;
+        if (item.Score < worst.Score) worst = item;
+    }
+
+
+    Console.WriteLine($"คะแนนสูงสุด: {best.Name} | {best.Type} | {best.Score}");
+    Console.WriteLine($"คะแนนต่ำสุด: {worst.Name} | {worst.Type} | {worst.Score}");
+}
+
 
 }
