@@ -144,4 +144,29 @@ static void AddRestaurant(List<Restaurant> restaurants)
     Console.WriteLine("-----------------------");
     ShowRestaurants(restaurants);
 }
+
+// ===== C | branch: feature/summary =====
+// งาน: แสดงร้านที่คะแนนสูงสุด และร้านที่คะแนนต่ำสุด
+// วิธีใช้: วางแทนเมธอดว่าง ShowSummary ใน Program.cs
+
+
+// ---------- commit ที่ 1 : ให้ทำงานได้ตามโจทย์ (ขั้นที่ 6) ----------
+static void ShowSummary(List<Restaurant> restaurants)
+{
+    Restaurant best = restaurants[0];
+    Restaurant worst = restaurants[0];
+
+
+    foreach (var item in restaurants)
+    {
+        if (item.Score > best.Score) best = item;
+        if (item.Score < worst.Score) worst = item;
+    }
+
+
+    Console.WriteLine($"คะแนนสูงสุด: {best.Name} ({best.Score})");
+    Console.WriteLine($"คะแนนต่ำสุด: {worst.Name} ({worst.Score})");
+}
+
+
 }
